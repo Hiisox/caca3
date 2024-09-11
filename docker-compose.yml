@@ -1,0 +1,33 @@
+services:
+
+  db:
+    container_name: postgres
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: Btc-db
+
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - 7070:8080
+
+  airflow:
+    container_name: airflow
+    image: apache/airflow
+    ports:
+      - 8080:8080
+    command: standalone
+volumes:
+  db:
+
+
+
+
